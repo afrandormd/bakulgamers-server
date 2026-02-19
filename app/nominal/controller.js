@@ -68,7 +68,7 @@ module.exports = {
             }, { coinName, coinQuantity, price })
 
             req.flash("alertMessage", "Berhasil ubah nominal")
-            req.flash("alertStatus", "warning")
+            req.flash("alertStatus", "success")
 
             res.redirect('/nominal')
 
