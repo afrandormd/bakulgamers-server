@@ -99,20 +99,24 @@ module.exports = {
             res.redirect("/voucher")
         }
     },
-    // viewEdit: async (req, res) => {
-    //     try {
-    //         const { id } = req.params;
-    //         const voucher = await Voucher.findOne({ _id: id })
-    //
-    //         res.render('admin/voucher/edit', {
-    //             voucher
-    //         })
-    //     } catch (error) {
-    //         req.flash("alertMessage", `${error.message}`)
-    //         req.flash("alertStatus", "danger")
-    //         res.redirect("/voucher")
-    //     }
-    // },
+    viewEdit: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const voucher = await Voucher.findOne({ _id: id })
+            const category = await Category.find()
+            const nominal = await Nominal.find()
+
+            res.render('admin/voucher/edit', {
+                voucher,
+                category,
+                nominal
+            })
+        } catch (error) {
+            req.flash("alertMessage", `${error.message}`)
+            req.flash("alertStatus", "danger")
+            res.redirect("/voucher")
+        }
+    },
     // actionEdit: async (req, res) => {
     //     try {
     //         const { id } = req.params
