@@ -78,22 +78,22 @@ module.exports = {
             res.redirect("/bank")
         }
     },
-    // actionDelete: async (req, res) => {
-    //     try {
-    //         const { id } = req.params
-    //         await Bank.findOneAndRemove({
-    //             _id: id
-    //         })
-    //
-    //         req.flash("alertMessage", "Berhasil hapus bank")
-    //         req.flash("alertStatus", "danger")
-    //
-    //         res.redirect('/bank')
-    //
-    //     } catch (error) {
-    //         req.flash("alertMessage", `${error.message}`)
-    //         req.flash("alertStatus", "danger")
-    //         res.redirect("/bank")
-    //     }
-    // },
+    actionDelete: async (req, res) => {
+        try {
+            const { id } = req.params
+            await Bank.findOneAndRemove({
+                _id: id
+            })
+
+            req.flash("alertMessage", "Berhasil hapus bank")
+            req.flash("alertStatus", "danger")
+
+            res.redirect('/bank')
+
+        } catch (error) {
+            req.flash("alertMessage", `${error.message}`)
+            req.flash("alertStatus", "danger")
+            res.redirect("/bank")
+        }
+    },
 }
