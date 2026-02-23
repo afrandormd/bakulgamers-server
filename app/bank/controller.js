@@ -27,24 +27,24 @@ module.exports = {
             res.redirect("/bank")
         }
     },
-    // actionCreate: async (req, res) => {
-    //     try {
-    //         const { coinName, coinQuantity, price } = req.body
-    //
-    //         let bank = await Bank({ coinName, coinQuantity, price })
-    //         await bank.save();
-    //
-    //         req.flash("alertMessage", "Berhasil tambah bank")
-    //         req.flash("alertStatus", "success")
-    //
-    //         res.redirect('/bank')
-    //
-    //     } catch (error) {
-    //         req.flash("alertMessage", `${error.message}`)
-    //         req.flash("alertStatus", "danger")
-    //         res.redirect("/bank")
-    //     }
-    // },
+    actionCreate: async (req, res) => {
+        try {
+            const { name, nameBank, noRekening } = req.body
+
+            let bank = await Bank({ name, nameBank, noRekening })
+            await bank.save();
+
+            req.flash("alertMessage", "Berhasil tambah bank")
+            req.flash("alertStatus", "success")
+
+            res.redirect('/bank')
+
+        } catch (error) {
+            req.flash("alertMessage", `${error.message}`)
+            req.flash("alertStatus", "danger")
+            res.redirect("/bank")
+        }
+    },
     // viewEdit: async (req, res) => {
     //     try {
     //         const { id } = req.params;
