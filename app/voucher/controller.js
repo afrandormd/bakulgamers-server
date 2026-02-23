@@ -189,22 +189,22 @@ module.exports = {
         }
 
     },
-    // actionDelete: async (req, res) => {
-    //     try {
-    //         const { id } = req.params
-    //         await Voucher.findOneAndRemove({
-    //             _id: id
-    //         })
-    //
-    //         req.flash("alertMessage", "Berhasil hapus voucher")
-    //         req.flash("alertStatus", "danger")
-    //
-    //         res.redirect('/voucher')
-    //
-    //     } catch (error) {
-    //         req.flash("alertMessage", `${error.message}`)
-    //         req.flash("alertStatus", "danger")
-    //         res.redirect("/voucher")
-    //     }
-    // },
+    actionDelete: async (req, res) => {
+        try {
+            const { id } = req.params
+            await Voucher.findOneAndRemove({
+                _id: id
+            })
+
+            req.flash("alertMessage", "Berhasil hapus voucher")
+            req.flash("alertStatus", "danger")
+
+            res.redirect('/voucher')
+
+        } catch (error) {
+            req.flash("alertMessage", `${error.message}`)
+            req.flash("alertStatus", "danger")
+            res.redirect("/voucher")
+        }
+    },
 }
