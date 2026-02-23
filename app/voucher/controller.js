@@ -192,9 +192,14 @@ module.exports = {
     actionDelete: async (req, res) => {
         try {
             const { id } = req.params
-            await Voucher.findOneAndRemove({
+            const voucher = await Voucher.findOneAndRemove({
                 _id: id
             })
+
+            let currentImage = `${config.rootPath}/public/uploads/${voucher.thumbnail}`
+            if (fs.existsSync(currentImage)) {
+                fs.unlinkSync(currentImage)
+            }
 
             req.flash("alertMessage", "Berhasil hapus voucher")
             req.flash("alertStatus", "danger")
