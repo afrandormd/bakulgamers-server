@@ -41,9 +41,33 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="nameBank">Masukkan nama bank</label>
-                                                <input type="text" value="<%= bank.nameBank %>"
-                                                    class="form-control" id="nameBank" name="nameBank"
-                                                    placeholder="Masukkan nama bank" required>
+                                                <select class="form-control select2" style="width: 100%;" name="nameBank" required>
+                                                    <option selected="selected">Pilih Bank</option>
+                                                    <option value="BRI" <% if(bank.nameBank === "BRI" ) { %>
+                                                        selected
+                                                        <% } %>
+                                                            >
+                                                            BRI
+                                                    </option>
+                                                    <option value="BCA" <% if(bank.nameBank === "BCA" ) { %>
+                                                        selected
+                                                        <% } %>
+                                                            >
+                                                            BCA
+                                                    </option>
+                                                    <option value="Mandiri" <% if(bank.nameBank === "Mandiri" ) { %>
+                                                        selected
+                                                        <% } %>
+                                                            >
+                                                            Mandiri
+                                                    </option>
+                                                    <option value="Jago" <% if(bank.nameBank === "Jago" ) { %>
+                                                        selected
+                                                        <% } %>
+                                                            >
+                                                            Jago
+                                                    </option>
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="noRekening">Masukkan nomor rekening</label>
