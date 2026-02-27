@@ -7,14 +7,17 @@ module.exports = {
             const alertMessage = req.flash("alertMessage")
             const alertStatus = req.flash("alertStatus")
             const alert = { message: alertMessage, status: alertStatus }
-
-            res.render('admin/users/view_signin', {
-                alert
-            })
+            if (req.session.user === null || req.session.user === undefined) {
+                res.render('admin/users/view_signin', {
+                    alert
+                })
+            } else {
+                res.redirect('/dashboard')
+            }
         } catch (error) {
             req.flash("alertMessage", `${error.message}`)
             req.flash("alertStatus", "danger")
-            res.redirect("/payment")
+            res.redirect("/")
         }
     },
     actionSignin: async (req, res) => {
@@ -24,7 +27,13 @@ module.exports = {
             if (checkUser) {
                 if (checkUser.status === 'Y') {
                     const checkPasswod = await bcrypt.compare(password, checkUser.password)
-                    if (checkPasswod){
+                    if (checkPasswod) {
+                        req.session.user = {
+                            id: checkUser._id,
+                            email: checkUser.email,
+                            status: checkUser.status,
+                            name: checkUser.name
+                        }
                         res.redirect('/dashboard')
                     } else {
                         req.flash("alertMessage", `Kata sandi yang anda inputkan salah`)
