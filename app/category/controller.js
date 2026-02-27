@@ -10,7 +10,9 @@ module.exports = {
 
             res.render('admin/category/view_category', {
                 category,
-                alert
+                alert,
+                name: req.session.user.name,
+                title: 'Halaman Kategori'
             })
         } catch (error) {
             req.flash("alertMessage", `${error.message}`)

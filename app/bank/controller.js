@@ -10,7 +10,9 @@ module.exports = {
 
             res.render('admin/bank/view_bank', {
                 bank,
-                alert
+                alert,
+                name: req.session.user.name,
+                title: 'Halaman Bank'
             })
         } catch (error) {
             req.flash("alertMessage", `${error.message}`)

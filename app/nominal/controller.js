@@ -10,7 +10,9 @@ module.exports = {
 
             res.render('admin/nominal/view_nominal', {
                 nominal,
-                alert
+                alert,
+                name: req.session.user.name,
+                title: 'Halaman Nominal'
             })
         } catch (error) {
             req.flash("alertMessage", `${error.message}`)

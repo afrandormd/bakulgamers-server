@@ -11,7 +11,9 @@ module.exports = {
 
             res.render('admin/payment/view_payment', {
                 payment,
-                alert
+                alert,
+                name: req.session.user.name,
+                title: 'Halaman Jenis Pembayaran'
             })
         } catch (error) {
             req.flash("alertMessage", `${error.message}`)
