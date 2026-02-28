@@ -24,7 +24,7 @@ module.exports = {
         try {
             res.render('admin/nominal/create', {
                 name: req.session.user.name,
-                title: 'Halaman Nominal'
+                title: 'Halaman Tambah Nominal'
             })
         } catch (error) {
             req.flash("alertMessage", `${error.message}`)
@@ -58,7 +58,7 @@ module.exports = {
             res.render('admin/nominal/edit', {
                 nominal,
                 name: req.session.user.name,
-                title: 'Halaman Nominal'
+                title: 'Halaman Ubah Nominal'
             })
         } catch (error) {
             req.flash("alertMessage", `${error.message}`)
