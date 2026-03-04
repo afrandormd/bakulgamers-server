@@ -47,7 +47,7 @@ let transactionSchema = mongoose.Schema({
     historyUser: {
         name: { type: String, required: [true, "Nama player harus diisi"] },
         phoneNumber: {
-            type: String,
+            type: Number,
             required: [true, "Nama akun harus diisi"],
             maxlength: [13, "Panjang nama harus antara 9 - 13 karakter"],
             minlength: [9, "Panjang nama harus antara 9 - 13 karakter"],
