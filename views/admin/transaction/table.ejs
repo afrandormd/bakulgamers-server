@@ -54,14 +54,14 @@
                     <%= transaction[i]?.player?.name ?? '-' %>
                 </td>
                 <td>
-                    <form action="/transaction/status/<%= transaction[i]._id %>?_method=PUT" method="POST"
+                    <form action="/transaction/status/<%= transaction[i]._id %>?status=failed&_method=PUT" method="POST"
                         style="display: inline-block;">
                         <button class="btn btn-danger btn-sm">
                             <i class="fas fa-times"></i>
                             Tolak
                         </button>
                     </form>
-                    <form action="/transaction/status/<%= transaction[i]._id %>?_method=PUT" method="POST"
+                    <form action="/transaction/status/<%= transaction[i]._id %>?status=success&_method=PUT" method="POST"
                         style="display: inline-block;">
                         <button class="btn btn-info btn-sm">
                             <i class="fa fa-check"></i>
