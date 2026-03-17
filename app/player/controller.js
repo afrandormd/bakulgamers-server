@@ -96,7 +96,7 @@ module.exports = {
                 value: value,
                 player: req.player._id,
                 historyUser: {
-                    name: res_voucher._doc.user?._id,
+                    name: res_voucher._doc.user?.name,
                     phoneNumber: res_voucher._doc.user?.phoneNumber,
                 },
                 category: res_voucher._doc.category?._id,
